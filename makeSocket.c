@@ -6,4 +6,4 @@
 int socket (int domain, int type , int protocol);
 // 성공 시 파일 디스크립터 , 실패시 -1 
 
-// 소켓의 생성 -- 전화기 구매
+// 소켓의 생성 -- 전화기 구매 
