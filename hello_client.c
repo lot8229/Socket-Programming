@@ -17,16 +17,16 @@ int main(int argc,char argv[]){
         exit(1);
     }
 
-    sock=socket(PF_INET, SOCK_STREAM,0);
+    sock=socket(PF_INET, SOCK_STREAM,0); //소켓을 생성하고 있다.
     if(sock ==-1)
         error_handling("socket() error");
-        
+
     memset(&serv_addr,0,sizeof(serv_addr));
     serv_addr.sin_family=AF_INET;
     serv_addr.sin_addr.s_addr=inet_addr(argv[1]);
     serv_addr.sin_port=htons(atoi(argv[2]));
 
-    if(connect(sock,(struct sockaddr*)&serv_addr,sizeof(serv_addr))==-1);
+    if(connect(sock,(struct sockaddr*)&serv_addr,sizeof(serv_addr))==-1); //conect 함수호출을 통해서 서버 프로그램에 연결을 요청하고 있다.
         error_handling("connect() error");
     
     str_len=read(sock,message,sizeof(message)-1);
