@@ -6,14 +6,14 @@
 #include<sys/socket.h>
 void error_handling(char *message);
 
-int main(int argc,char argv[]){
+int main(int argc,char *argv[]){
     int sock;
     struct sockaddr_in serv_addr;
     char message[30];
     int str_len;
     
     if(argc!=3){
-        printf("usage : %s <ip> <port>\n");
+        printf("usage : %s <ip> <port>\n",argv[1]);
         exit(1);
     }
 
@@ -26,7 +26,7 @@ int main(int argc,char argv[]){
     serv_addr.sin_addr.s_addr=inet_addr(argv[1]);
     serv_addr.sin_port=htons(atoi(argv[2]));
 
-    if(connect(sock,(struct sockaddr*)&serv_addr,sizeof(serv_addr))==-1); //conect 함수호출을 통해서 서버 프로그램에 연결을 요청하고 있다.
+    if(connect(sock,(struct sockaddr*)&serv_addr,sizeof(serv_addr))==-1) //conect 함수호출을 통해서 서버 프로그램에 연결을 요청하고 있다.
         error_handling("connect() error");
     
     str_len=read(sock,message,sizeof(message)-1);
